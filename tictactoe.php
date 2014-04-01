@@ -9,7 +9,7 @@
 
 		function populate() //fill in the board with randomized x's and o's
 		{
-			$a = ['x', 'o'];
+			$a = ['x', 'o', '_'];
 			$b = [];
 			$result = [];
 
@@ -19,7 +19,6 @@
 
 			for ($i=0; $i < 3; $i++) {
 				$result[] = $a[$b[$i]];
-				# code...
 			}
 
 			return($result);
@@ -39,7 +38,6 @@
 				//add in a row
 				$this->a[] = $row;
 				}
-
 			}
 
 			function show()
@@ -55,10 +53,92 @@
 					echo "<br>";
 				}
 			}
+
+			function check_x()//checks to see if there are 3 x's in a row
+			{
+				//HORIZONTAL
+				foreach ($this->a as $key => $r)
+				{
+					$x_total = 0;
+					foreach ($r as $key => $c) //check each row to see if three consecutive
+					{
+						if ($c == 'x')
+						{
+							$x_total++;
+						}
+					}
+
+					if ($x_total == 3)
+					{
+						exit("horizontal X win!");
+					}
+				}
+
+				//VERTICAL
+				for ($i=0; $i < 3; $i++)
+				{
+					$vx_total = 0;
+					for ($j=0; $j < 3; $j++)
+					{ 
+						// echo $this->a[$j][$i];
+						if ($this->a[$j][$i] == 'x')
+						{
+							$vx_total++;
+						}
+
+						if ($vx_total == 3)
+						{
+							exit("vertical X win!");
+						}
+					}
+				}
+			}
+
+			function check_o()
+			{
+				//HORIZONTAL
+				foreach ($this->a as $key => $r)
+				{
+					$o_total = 0;
+					foreach ($r as $key => $c) //check each row to see if three consecutive
+					{
+						if ($c == 'o')
+						{
+							$o_total++;
+						}
+					}
+
+					if ($o_total == 3)
+					{
+						exit("horizontal O win!");
+					}
+				}
+
+				//VERTICAL
+				for ($i=0; $i < 3; $i++)
+				{
+					$vo_total = 0;
+					for ($j=0; $j < 3; $j++)
+					{ 
+						// echo $this->a[$j][$i];
+						if ($this->a[$j][$i] == 'o')
+						{
+							$vo_total++;
+						}
+
+						if ($vo_total == 3)
+						{
+							exit("vertical O win!");
+						}
+					}
+				}			
+			}
 		}
 
 		$test = new Board();
 		$test->show();
+		$test->check_x();
+		$test->check_o();
 	 ?>
 
 
