@@ -92,6 +92,17 @@
 						}
 					}
 				}
+
+				//DIAGONALS
+				if (($this->a[0][0]=='x') && ($this->a[1][1]=='x') && ($this->a[2][2]=='x'))
+				{
+					exit("Diagonal X Win!");
+				}
+
+				if (($this->a[0][2]=='x') && ($this->a[1][1]=='x') && ($this->a[2][0]=='x'))
+				{
+					exit("Diagonal X Win!");
+				}
 			}
 
 			function check_o()
@@ -131,7 +142,18 @@
 							exit("vertical O win!");
 						}
 					}
-				}			
+				}
+
+				//DIAGONALS
+				if (($this->a[0][0]=='o') && ($this->a[1][1]=='o') && ($this->a[2][2]=='o'))
+				{
+					exit("Diagonal O Win!");
+				}
+
+				if (($this->a[0][2]=='o') && ($this->a[1][1]=='o') && ($this->a[2][0]=='o'))
+				{
+					exit("Diagonal O Win!");
+				}
 			}
 		}
 
